@@ -1,5 +1,6 @@
 let cart = [];
-let productName = document.getElementById('product-name');
+
+// main function..
 function addToCart(productName, price){
     const productIndex = cart.findIndex(item => item.name === productName);
     if(productIndex > -1){
@@ -9,8 +10,10 @@ function addToCart(productName, price){
         cart.push({name: productName, price: price, quantity: 1});
     }
     updateCart();
+    updateCartCount();
 }
 
+// cart inner working..
 function updateCart(){
     const cartContainer = document.getElementById('cart');
     const totalContainer = document.getElementById('total');
@@ -29,4 +32,11 @@ function updateCart(){
     });
 
     totalContainer.textContent = `Total: $${total}`;
+}
+
+// counting update..
+function updateCartCount(){
+    const cartCount = document.getElementById('cart-count');
+    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalQuantity;
 }
