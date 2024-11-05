@@ -40,3 +40,16 @@ function updateCartCount(){
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalQuantity;
 }
+
+// checkout..
+function checkout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+    alert("Thank you for your purchase!");
+    cart = [];
+    updateCart();
+    const cartCount = document.getElementById('cart-count');
+    cartCount.textContent = 0;
+}
